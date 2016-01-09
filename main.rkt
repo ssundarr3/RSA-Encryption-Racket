@@ -1,4 +1,4 @@
-#lang racket
+#lang racket/base
 #|Things to improve
 Documentation
 Level of Encryption(i.e. min-range and max-range in defenitions.rkt)
@@ -7,10 +7,8 @@ Style Guide...
 Web based input and output
 time
 |#
-
 (require "definitions.rkt")
-
-
+#|
 ;; Encrypting a message with random computer generated private and public keys... 
 (encrypt "HEllo")
 
@@ -26,4 +24,18 @@ time
 public-key
 
 private-key
-
+|#
+(display "Enter \"create private public\" to create new keys and display them
+Enter \"encrypt\" to encrypt (first provide message, then the public key)
+Enter \"decrypt\" to decrypt (first provide encrypted message, then the private key)
+Enter \"encrypt create new\" to encrypt and display new public and private keys
+Enter \"exit\" to quit at any time!\n")
+(define (main c)
+  (cond[(string=? c "exit") (exit)]
+       [(string=? c "create private public") (values public-key private-key)]
+       [(string=? c "encrypt create new") (values (encrypt c) public-key private-key)]
+       [(string=? c "encrypt") (encrypt (read-line) (read))]
+       [(string=? c "decrypt") (decrypt (read) (read))]
+       [else (display "\nSorry, not in options...")])) 
+(define choice  (read-line))
+(main choice)
