@@ -10,8 +10,9 @@
 
 ;;;;;;;;;; IMPLEMENTATION ;;;;;;;;;;
 
+(define big-number 99999)
 ;; see interface above [no further info required]
 (define (random-number min max)
   (floor (+ min (* (- max min) 
-                   (/ (random 99999) 
-                      99999)))))
+                   (/ (random big-number) 
+                      big-number)))))
