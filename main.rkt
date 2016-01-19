@@ -14,7 +14,7 @@ Enter \"exit\" to quit at any time!\n")
 (define (main c)
   (cond[(string=? c "exit") (exit)]
        [(string=? c "create private public") (values public-key private-key)]
-       [(string=? c "encrypt create new") (values (encrypt c) public-key private-key)]
+       [(string=? c "encrypt create new") (values (encrypt (read-line)) public-key private-key)]
        [(string=? c "encrypt") (encrypt (read-line) (read))]
        [(string=? c "decrypt") (decrypt (read) (read))]
        [else (display "\nSorry, not in options...")]))
